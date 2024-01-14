@@ -7,14 +7,16 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf dist && cd ../Part 2/phonebook && npm run build && cp -r dist ../Part 3/phonebook",
+    "build:ui": "@powershell Remove-Item -Recurse -Force dist && cd ../../Part 2/phonebook && npm run build && @powershell Copy-Item -Path ./dist -Destination '../../Part 3/phonebook' -Recurse",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "mongoose": "^8.0.4",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
